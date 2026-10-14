@@ -26,7 +26,6 @@ int main() {
 		fgets(buffer, 50, fp);
 		brojac++;
 	}
-	//printf("%d\n", brojac);return 0;
 	
 	stud* studenti = NULL;
 	studenti = (stud*)malloc(brojac * sizeof(stud));
