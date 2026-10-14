@@ -33,14 +33,14 @@ int main(void) {
 		printf("5. Obrisi po prezimenu\n");
 		printf("0. Izlaz\n");
 		printf("Odaberite opciju: ");
-		scanf(" %d", &choice);
+		scanf("%d", &choice);
 		
 		switch (choice)
 		{
 			case 1: {
 				Person newP;
 				printf("Unesite ime, prezime i godinu rodjenja: ");
-				scanf(" %s %s %d", newP.name, newP.lastName, &newP.yearOfBirth);
+				scanf("%s %s %d", newP.name, newP.lastName, &newP.yearOfBirth);
 				insertBegin(newP.name, newP.lastName, newP.yearOfBirth, &head);
 				break;
 			}
@@ -48,7 +48,7 @@ int main(void) {
 			case 2: {
 				Person newP;
 				printf("Unesite ime, prezime i godinu rodjenja: ");
-				scanf(" %s %s %d", newP.name, newP.lastName, &newP.yearOfBirth);
+				scanf("%s %s %d", newP.name, newP.lastName, &newP.yearOfBirth);
 				insertEnd(newP.name, newP.lastName, newP.yearOfBirth, &head);
 				break;
 			}
@@ -61,7 +61,7 @@ int main(void) {
 			case 4: {
 				char _lastName[MAX];
 				printf("Unesite prezime: ");
-				scanf(" %s", _lastName);
+				scanf("%s", _lastName);
 
 				Person* newP = findByLastName(_lastName, &head);
 
@@ -78,7 +78,7 @@ int main(void) {
 			case 5: {
 				char _lastName[MAX];
 				printf("Unesite prezime: ");
-				scanf(" %s", _lastName);
+				scanf("%s", _lastName);
 
 				if (deletePerson(_lastName, &head) == 0) {
 					puts("Osoba je uspjesno obrisana!");
