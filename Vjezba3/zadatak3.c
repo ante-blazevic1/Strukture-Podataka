@@ -420,7 +420,11 @@ int sortList(Person* head) {
 
 		for (int j = 0; j < N - 1 - i; j++) {
 
-			if (strcmp(curr->lastName, curr->next->lastName) > 0) {
+			int resultLastName = strcmp(curr->lastName, curr->next->lastName);
+			int resultName = strcmp(curr->name, curr->next->name);
+
+			if (resultLastName > 0) {
+
 				Person* temp = curr->next;
 
 				prev->next = temp;
@@ -428,42 +432,31 @@ int sortList(Person* head) {
 				temp->next = curr;
 
 				prev = temp;
-
-				continue;
 			}
+			else if (resultLastName == 0 && resultName > 0) {
 
-			if (strcmp(curr->lastName, curr->next->lastName) == 0) {
+				Person* temp = curr->next;
 
-				if (strcmp(curr->name, curr->next->name) > 0) {
-					Person* temp = curr->next;
+				prev->next = temp;
+				curr->next = temp->next;
+				temp->next = curr;
 
-					prev->next = temp;
-					curr->next = temp->next;
-					temp->next = curr;
-
-					prev = temp;
-
-					continue;
-				}
+				prev = temp;
 			}
-
-			if (strcmp(curr->lastName, curr->next->lastName) == 0 && strcmp(curr->name, curr->next->name) == 0) {
+			else if (resultLastName == 0 && resultName == 0 && curr->yearOfBirth > curr->next->yearOfBirth) {
 				
-				if (curr->yearOfBirth > curr->next->yearOfBirth) {
-					Person* temp = curr->next;
+				Person* temp = curr->next;
 
-					prev->next = temp;
-					curr->next = temp->next;
-					temp->next = curr;
+				prev->next = temp;
+				curr->next = temp->next;
+				temp->next = curr;
 
-					prev = temp;
-
-					continue;
-				}
+				prev = temp;
 			}
-			
-			prev = curr;
-			curr = curr->next;
+			else {
+				prev = curr;
+				curr = curr->next;
+			}
 		}
 	}
 
