@@ -423,28 +423,10 @@ int sortList(Person* head) {
 			int resultLastName = strcmp(curr->lastName, curr->next->lastName);
 			int resultName = strcmp(curr->name, curr->next->name);
 
-			if (resultLastName > 0) {
+			if ((resultLastName > 0) ||
+				(resultLastName == 0 && resultName > 0) ||
+				(resultLastName == 0 && resultName == 0 && curr->yearOfBirth > curr->next->yearOfBirth)) {
 
-				Person* temp = curr->next;
-
-				prev->next = temp;
-				curr->next = temp->next;
-				temp->next = curr;
-
-				prev = temp;
-			}
-			else if (resultLastName == 0 && resultName > 0) {
-
-				Person* temp = curr->next;
-
-				prev->next = temp;
-				curr->next = temp->next;
-				temp->next = curr;
-
-				prev = temp;
-			}
-			else if (resultLastName == 0 && resultName == 0 && curr->yearOfBirth > curr->next->yearOfBirth) {
-				
 				Person* temp = curr->next;
 
 				prev->next = temp;
